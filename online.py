@@ -3,9 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the questions from the Excel file
-file_path = '20240806_アンバランス度質問シート_rawdata.xlsx'
-df = pd.read_excel(file_path, sheet_name='体質バランス乱れ度')
 
+import tempfile
+df= st.file_uploader("20240806_アンバランス度質問シート_rawdata.xlsx", type="xlsx")
+if uploaded_file:
+        temp_dir = tempfile.mkdtemp()
+        path = os.path.join(temp_dir, uploaded_file.name)
+        with open(path, "wb") as f:
+                f.write(uploaded_file.getvalue())
 # Map to hold the scores for Vata, Pitta, and Kapha
 dosha_scores = {'Vata': 0, 'Pitta': 0, 'Kapha': 0}
 
