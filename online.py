@@ -5,7 +5,7 @@ import requests
 from io import BytesIO
 
 # Function to download the Excel file from GitHub
-df = pd.read_excel('20240806_アンバランス度質問シート_rawdata.xlsx', sheet_name='体質バランス乱れ度')
+df = pd.read_excel('20240806_アンバランス度質問シート_rawdata.xlsx')
 
 
 # Map to hold the scores for Vata, Pitta, and Kapha
