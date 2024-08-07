@@ -5,23 +5,7 @@ import requests
 from io import BytesIO
 
 # Function to download the Excel file from GitHub
-def download_excel_file(url):
-    response = requests.get(url)
-    response.raise_for_status()  # Check that the request was successful
-    return BytesIO(response.content)
-
-# URL of the Excel file in your GitHub repository
-file_url = 'https://github.com/j-ago/online/blob/master/20240806_アンバランス度質問シート_rawdata.xlsx'
-
-try:
-    excel_data = download_excel_file(file_url)
-    df = pd.read_excel(excel_data, sheet_name='体質バランス乱れ度',engine='openpyxl')
-except ImportError as e:
-    st.error("依存関係のエラー: 必要なモジュールが見つかりませんでした。'openpyxl' がインストールされていることを確認してください。")
-    raise e
-except Exception as e:
-    st.error(f"ファイル読み込みエラー: {e}")
-    raise e
+df = pd.read_excel('20240806_アンバランス度質問シート_rawdata.xlsx', sheet_name='体質バランス乱れ度')
 
 
 # Map to hold the scores for Vata, Pitta, and Kapha
