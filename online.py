@@ -15,7 +15,7 @@ file_url = 'https://github.com/j-ago/online/blob/master/20240806_アンバラン
 
 try:
     excel_data = download_excel_file(file_url)
-    df = pd.read_excel(excel_data, sheet_name='体質バランス乱れ度')
+    df = pd.read_excel(excel_data, sheet_name='体質バランス乱れ度',engine='openpyxl')
 except ImportError as e:
     st.error("依存関係のエラー: 必要なモジュールが見つかりませんでした。'openpyxl' がインストールされていることを確認してください。")
     raise e
