@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Load the questions from the Excel file
 
-file_path = 'https://github.com/j-ago/online/blob/master/20240806_アンバランス度質問シート_rawdata.xlsx'
+file_path = '20240806_アンバランス度質問シート_rawdata.xlsx'
 df = pd.read_excel(file_path, sheet_name='体質バランス乱れ度')
 
 # Map to hold the scores for Vata, Pitta, and Kapha
