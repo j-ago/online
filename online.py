@@ -1,11 +1,28 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import requests
+from io import BytesIO
 
-# Load the questions from the Excel file
+# Function to download the Excel file from GitHub
+def download_excel_file(url):
+    response = requests.get(url)
+    response.raise_for_status()  # Check that the request was successful
+    return BytesIO(response.content)
 
-file_path = '20240806_アンバランス度質問シート_rawdata.xlsx'
-df = pd.read_excel(file_path, sheet_name='体質バランス乱れ度')
+# URL of the Excel file in your GitHub repository
+file_url = 'https://github.com/j-ago/online/blob/master/20240806_アンバランス度質問シート_rawdata.xlsx'
+
+try:
+    excel_data = download_excel_file(file_url)
+    df = pd.read_excel(excel_data, sheet_name='体質バランス乱れ度')
+except ImportError as e:
+    st.error("依存関係のエラー: 必要なモジュールが見つかりませんでした。'openpyxl' がインストールされていることを確認してください。")
+    raise e
+except Exception as e:
+    st.error(f"ファイル読み込みエラー: {e}")
+    raise e
+
 
 # Map to hold the scores for Vata, Pitta, and Kapha
 dosha_scores = {'Vata': 0, 'Pitta': 0, 'Kapha': 0}
