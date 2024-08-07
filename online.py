@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import requests
-from io import BytesIO
+
 
 # Function to download the Excel file from GitHub
 df = pd.read_excel('20240806_アンバランス度質問シート_rawdata.xlsx')
