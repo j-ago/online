@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 # Function to download the Excel file from GitHub
-df = pd.read_excel('20240806_アンバランス度質問シート_rawdata.xlsx')
+df = pd.read_excel('20240806_rawdata.xlsx')
 
 
 # Map to hold the scores for Vata, Pitta, and Kapha
